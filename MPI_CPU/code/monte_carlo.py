@@ -13,6 +13,7 @@ ny = 100
 nb_tirages = 100
 valeurs_aux_bords = np.array([0.0,1.0,2.0,3.0])  # valeurs de la solution sur les bords y=0, x=nx, y=ny et x=0
 
+
 def conditions_aux_bords(grille):  # Initialisation de la solution sur les bords
 	for i in range(0,nx): # y = 0
 		grille[i][0] = valeurs_aux_bords[0]
@@ -25,6 +26,7 @@ def conditions_aux_bords(grille):  # Initialisation de la solution sur les bords
 
 	for i in range(0,ny): # x = 0
 		grille[i][0] = valeurs_aux_bords[3]
+
 
 def calcul_solution(grille):
 	random.seed(time.gmtime(0))
@@ -57,6 +59,7 @@ def calcul_solution(grille):
 				grille[i][j] += valeur
 	grille /= nb_tirages
 
+
 def ecriture(grille):
 	fichier = open("monte_carlo.vtk","w")
 	Nbnoe = nx*ny
@@ -79,6 +82,7 @@ def ecriture(grille):
 			fichier.write("%f\n" % grille[i][j])
 	fichier.close();			
 
+
 def main():
 	grille = np.zeros((nx,ny),dtype=float) # Initialisation de la solution
 	t0 = time.time() 
@@ -89,6 +93,5 @@ def main():
 	#print(grille)
 	print(t1-t0)
 
-	
 
 main()
